@@ -1,0 +1,10 @@
+/Users/borakasmer/Projects/coreElastic/elasticWeb/obj/Debug/netcoreapp2.0/elasticWeb.csproj.CoreCompileInputs.cache
+/Users/borakasmer/Projects/coreElastic/elasticWeb/obj/Debug/netcoreapp2.0/elasticWeb.AssemblyInfoInputs.cache
+/Users/borakasmer/Projects/coreElastic/elasticWeb/obj/Debug/netcoreapp2.0/elasticWeb.AssemblyInfo.cs
+/Users/borakasmer/Projects/coreElastic/elasticWeb/bin/Debug/netcoreapp2.0/elasticWeb.deps.json
+/Users/borakasmer/Projects/coreElastic/elasticWeb/bin/Debug/netcoreapp2.0/elasticWeb.runtimeconfig.json
+/Users/borakasmer/Projects/coreElastic/elasticWeb/bin/Debug/netcoreapp2.0/elasticWeb.runtimeconfig.dev.json
+/Users/borakasmer/Projects/coreElastic/elasticWeb/bin/Debug/netcoreapp2.0/elasticWeb.dll
+/Users/borakasmer/Projects/coreElastic/elasticWeb/bin/Debug/netcoreapp2.0/elasticWeb.pdb
+/Users/borakasmer/Projects/coreElastic/elasticWeb/obj/Debug/netcoreapp2.0/elasticWeb.dll
+/Users/borakasmer/Projects/coreElastic/elasticWeb/obj/Debug/netcoreapp2.0/elasticWeb.pdb

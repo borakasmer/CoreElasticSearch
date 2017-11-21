@@ -1,0 +1,10 @@
+/Users/borakasmer/Projects/coreElastic/elasticService/obj/Debug/netcoreapp2.0/elasticService.csproj.CoreCompileInputs.cache
+/Users/borakasmer/Projects/coreElastic/elasticService/obj/Debug/netcoreapp2.0/elasticService.AssemblyInfoInputs.cache
+/Users/borakasmer/Projects/coreElastic/elasticService/obj/Debug/netcoreapp2.0/elasticService.AssemblyInfo.cs
+/Users/borakasmer/Projects/coreElastic/elasticService/bin/Debug/netcoreapp2.0/elasticService.deps.json
+/Users/borakasmer/Projects/coreElastic/elasticService/bin/Debug/netcoreapp2.0/elasticService.runtimeconfig.json
+/Users/borakasmer/Projects/coreElastic/elasticService/bin/Debug/netcoreapp2.0/elasticService.runtimeconfig.dev.json
+/Users/borakasmer/Projects/coreElastic/elasticService/bin/Debug/netcoreapp2.0/elasticService.dll
+/Users/borakasmer/Projects/coreElastic/elasticService/bin/Debug/netcoreapp2.0/elasticService.pdb
+/Users/borakasmer/Projects/coreElastic/elasticService/obj/Debug/netcoreapp2.0/elasticService.dll
+/Users/borakasmer/Projects/coreElastic/elasticService/obj/Debug/netcoreapp2.0/elasticService.pdb

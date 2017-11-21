@@ -1,0 +1,19 @@
+﻿@model List<string>
+<div class="container">
+    <div class="jumbotron">
+        <h3>ElasticSearch Error Log List</h3>
+    </div>
+    @using(Html.BeginForm("Detail","Home","FormMethod.Post"))
+    {
+        @foreach(var error in Model)
+        {
+            <div class="radio">
+                <label for="female">
+                <input type="radio" name="error" id="error" value="@error">@error
+                </label>
+            </div>
+        }
+        <br>
+        <input type="submit" value="Detay" class="btn btn-success">
+    }
+</div>

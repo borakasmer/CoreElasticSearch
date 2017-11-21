@@ -1,0 +1,34 @@
+@model List<Log>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Error Detail Total Count : @Model.Count</h3>            
+        </div>        
+        <hr>
+        <table class="table">
+            <thead>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Created Date</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var log in Model)
+                    {
+                        <tr>
+                            <td>
+                                @log.UserID
+                            </td>
+                             <td>
+                                @log.PostDate
+                            </td>
+                             <td>
+                                @log.message
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </thead>
+        </table>
+    </div>
