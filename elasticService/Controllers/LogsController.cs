@@ -21,7 +21,7 @@ namespace elasticService.Controllers
         [HttpPost]
         public void InsertLog([FromBody]Log log)
         {
-            //elasticClient.DeleteIndex("log_history");
+            elasticClient.DeleteIndex("log_history");
 
             if (!elasticClient.IndexExists("error_log").Exists)
             {

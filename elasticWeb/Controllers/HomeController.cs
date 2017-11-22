@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using elasticWeb.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace elasticWeb.Controllers
 {
@@ -14,10 +15,10 @@ namespace elasticWeb.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            try
-            {
+            //try
+            //{
                 int b = 1;
-                int c = 0;
+                int c = 1;
                 int a = b / c;
 
                 using (HttpClient client = new HttpClient())
@@ -26,8 +27,8 @@ namespace elasticWeb.Controllers
                     var data = JsonConvert.DeserializeObject<List<string>>(result.Content.ReadAsStringAsync().Result);
                     return View(data);
                 }
-            }
-            catch (Exception ex)
+            //}
+            /*catch (Exception ex)
             {
                 Log log = new Log()
                 {
@@ -45,17 +46,17 @@ namespace elasticWeb.Controllers
                     var data2 = JsonConvert.DeserializeObject<List<string>>(result.Content.ReadAsStringAsync().Result);
                     return View(data2);
                 }
-            }
+            }*/
         }
         [HttpPost]
         public async Task<IActionResult> Detail(string error)
-        {            
+        {
             using (HttpClient client = new HttpClient())
-            {                                
+            {
                 var result = await client.GetAsync($"http://localhost:1453/api/logs/{error}");
                 var data = JsonConvert.DeserializeObject<List<Log>>(result.Content.ReadAsStringAsync().Result);
                 return View(data);
-            }            
+            }
         }
         static int A(string argument)
         {
@@ -67,43 +68,44 @@ namespace elasticWeb.Controllers
             // Handle invalid argument.
             if (argument.Length == 0)
             {
-                throw new ArgumentException("Zero-length string invalid","argument");
+                throw new ArgumentException("Zero-length string invalid", "argument");
             }
             return argument.Length;
         }
         public async Task<IActionResult> About()
         {
-            try
-            {
-                A(null);
-            }
-            catch (Exception ex)
-            {
-                Log log = new Log()
-                {
-                    PostDate = DateTime.Now,
-                    message = ex.Message,
-                    UserID = 2
-                };
-                using (HttpClient client = new HttpClient())
-                {
-                    var data = JsonConvert.SerializeObject(log);
-                    HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
-                    await client.PostAsync("http://localhost:1453/api/logs", content);
-                }
-            }
             ViewData["Message"] = "Your application description page.";
+            // try
+            // {
+            A(null);
+            // }
+            /* catch (Exception ex)
+             {
+                 Log log = new Log()
+                 {
+                     PostDate = DateTime.Now,
+                     message = ex.Message,
+                     UserID = 2
+                 };
+                 using (HttpClient client = new HttpClient())
+                 {
+                     var data = JsonConvert.SerializeObject(log);
+                     HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+                     await client.PostAsync("http://localhost:1453/api/logs", content);
+                 }
+             }*/            
 
             return View();
         }
 
         public async Task<IActionResult> Contact()
         {
-            try
-            {
-                A("");
-            }
-            catch (Exception ex)
+             ViewData["Message"] = "Your contact page.";
+            //try
+            //{
+            A("");
+            //}
+            /*catch (Exception ex)
             {
                 Log log = new Log()
                 {
@@ -117,15 +119,52 @@ namespace elasticWeb.Controllers
                     HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
                     await client.PostAsync("http://localhost:1453/api/logs", content);
                 }
-            }
-            ViewData["Message"] = "Your contact page.";
+            }*/           
 
             return View();
         }
 
-        public IActionResult Error()
+        public async Task<IActionResult> Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            Log log = new Log()
+            {
+                PostDate = DateTime.Now,
+                message = exceptionFeature.Error.Message,
+                UserID =GetUserIDByPage(exceptionFeature.Path.Replace("/Home/",""))
+                };
+            using (HttpClient client = new HttpClient())
+            {
+                var data = JsonConvert.SerializeObject(log);
+                HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+                await client.PostAsync("http://localhost:1453/api/logs", content);
+            }
+            return View(exceptionFeature.Path.Replace("/Home/",""));
+        }
+
+        public int GetUserIDByPage(string page)
+        {
+            switch (page)
+            {
+                case "About":
+                    {
+                        return 3;
+                    }
+                case "Contact":
+                    {
+                        return 2;
+
+                    }
+                case "Index":
+                    {
+                        return 1;
+                    }
+                default:
+                    {
+                        return 1;
+                    }
+            }
         }
     }
 }
